@@ -1,0 +1,17 @@
+[Unit]
+Description=Run Restic Backup to Fedora
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c "export XDG_CACHE_HOME=/home/sharre123/.cache && /usr/bin/restic backup /home/sharre123/documents --repo sftp:sharre123@192.168.44.3:/home/sharre123/backup/repo --password-file /home/sharre123/restic-password"
+User=sharre123
+NoNewPrivileges=true
+Environment="HOME=/home/sharre123"
+Environment="RESTIC_PASSWORD=2315"
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+
